@@ -2,6 +2,10 @@
 
 A retro-terminal themed typing speed game. No frameworks, no build tools. Pure HTML, CSS, and vanilla JavaScript.
 
+## 🌐 Play Online
+
+Play the game live at: [https://reddi-karunya.github.io/typespeed-game/](https://reddi-karunya.github.io/typespeed-game/)
+
 ---
 
 ## 📁 Project Structure
