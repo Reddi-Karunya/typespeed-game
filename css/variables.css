@@ -1,17 +1,17 @@
 /* css/variables.css */
 :root {
   /* Colors */
-  --bg:           #080810;
-  --bg-2:         #0d0d1a;
-  --surface:      #10101f;
-  --surface-2:    #14142a;
+  --bg:           linear-gradient(135deg, #0a0a14 0%, #080810 100%);
+  --bg-2:         linear-gradient(135deg, #0f0f1d 0%, #0d0d1a 100%);
+  --surface:      linear-gradient(135deg, #121222 0%, #10101f 100%);
+  --surface-2:    linear-gradient(135deg, #161636 0%, #14142a 100%);
   --border:       #1c1c35;
   --border-hover: #2a2a50;
 
   --accent:       #00ff88;
   --accent-dim:   rgba(0, 255, 136, 0.12);
   --accent-glow:  rgba(0, 255, 136, 0.35);
-  --accent-2:     #7c3aed;
+  --accent-2:     linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
   --danger:       #ff3860;
   --danger-dim:   rgba(255, 56, 96, 0.15);
   --warn:         #ffbe0b;
@@ -41,8 +41,9 @@
   --space-2xl:  64px;
 
   /* Radii */
-  --radius-sm:  2px;
-  --radius-md:  4px;
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
 
   /* Transitions */
   --t-fast:  0.1s ease;
@@ -51,5 +52,7 @@
 
   /* Shadows */
   --shadow-glow:  0 0 30px var(--accent-glow);
-  --shadow-card:  0 4px 32px rgba(0,0,0,0.5);
+  --shadow-card:  0 8px 32px rgba(0,0,0,0.6);
+  --shadow-hover: 0 12px 40px rgba(0,0,0,0.8);
+  --shadow-inset: inset 0 2px 4px rgba(0,0,0,0.3);
 }

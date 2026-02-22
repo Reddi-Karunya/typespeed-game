@@ -83,13 +83,16 @@
   color: var(--text-muted);
   background: transparent;
   cursor: pointer;
-  transition: all var(--t-fast);
+  transition: all var(--t-med);
   border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-inset);
 }
 
 .mode-btn:hover {
   color: var(--accent);
   border-color: rgba(0,255,136,0.2);
+  box-shadow: 0 0 15px var(--accent-glow);
+  transform: translateY(-1px);
 }
 
 .mode-btn.active {
@@ -97,6 +100,7 @@
   border-color: var(--accent);
   background: var(--accent-dim);
   text-shadow: 0 0 8px var(--accent-glow);
+  box-shadow: var(--shadow-glow);
 }
 
 /* ── STAT CARDS ──────────────────── */
@@ -106,7 +110,15 @@
   padding: 14px 16px;
   position: relative;
   overflow: hidden;
-  transition: border-color var(--t-med);
+  transition: all var(--t-med);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.stat-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
 }
 
 .stat-card::after {
@@ -195,6 +207,13 @@
   max-height: 168px;
   overflow: hidden;
   position: relative;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .word {
