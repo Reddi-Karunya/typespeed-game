@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TYPECRYPT — Typing Speed Game</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Background Effects -->
+  <div class="bg-grid"></div>
+  <div class="scanlines"></div>
+  <div class="vignette"></div>
+
+  <!-- Particle Container -->
+  <div id="particle-container"></div>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo-group">
+        <h1 class="logo">TYPE<span>CRYPT</span></h1>
+        <span class="logo-tagline">// speed · accuracy · mastery</span>
+      </div>
+      <div class="header-meta">
+        <div class="meta-stat">
+          <strong id="best-wpm-display">—</strong>
+          <span>best wpm</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-stat">
+          <strong id="tests-done-display">0</strong>
+          <span>tests done</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <span class="toolbar-label">time</span>
+        <button class="mode-btn active" data-time="15">15s</button>
+        <button class="mode-btn" data-time="30">30s</button>
+        <button class="mode-btn" data-time="60">60s</button>
+        <button class="mode-btn" data-time="120">120s</button>
+      </div>
+      <div class="toolbar-sep"></div>
+      <div class="toolbar-group">
+        <span class="toolbar-label">words</span>
+        <button class="mode-btn diff-btn active" data-diff="normal">normal</button>
+        <button class="mode-btn diff-btn" data-diff="punctuation">punctuation</button>
+        <button class="mode-btn diff-btn" data-diff="numbers">numbers</button>
+      </div>
+    </div>
+
+    <!-- LIVE STATS -->
+    <div class="stats-row">
+      <div class="stat-card" id="stat-wpm">
+        <div class="stat-label">WPM</div>
+        <div class="stat-value"><span id="live-wpm">0</span><span class="stat-unit">wpm</span></div>
+      </div>
+      <div class="stat-card" id="stat-acc">
+        <div class="stat-label">Accuracy</div>
+        <div class="stat-value"><span id="live-acc">100</span><span class="stat-unit">%</span></div>
+      </div>
+      <div class="stat-card" id="stat-correct">
+        <div class="stat-label">Correct</div>
+        <div class="stat-value"><span id="live-correct">0</span><span class="stat-unit">w</span></div>
+      </div>
+      <div class="stat-card" id="stat-errors">
+        <div class="stat-label">Errors</div>
+        <div class="stat-value"><span id="live-errors">0</span></div>
+      </div>
+    </div>
+
+    <!-- TIMER -->
+    <div class="timer-section">
+      <div class="timer-display" id="timer">15</div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- TYPING AREA -->
+    <div class="typing-card" id="typing-card" onclick="window.game.focusInput()">
+      <div class="card-corner tl"></div>
+      <div class="card-corner tr"></div>
+      <div class="card-corner bl"></div>
+      <div class="card-corner br"></div>
+      <div id="word-display"></div>
+      <input
+        type="text"
+        id="hidden-input"
+        class="hidden-input"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+      <p class="click-hint" id="click-hint">click here · or · press any key to start</p>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls" id="controls">
+      <button class="btn btn-primary" id="restart-btn">
+        <span class="btn-icon">↺</span> restart
+      </button>
+      <button class="btn btn-ghost" id="new-words-btn">
+        <span class="btn-icon">⟳</span> new words
+      </button>
+      <span class="shortcut-hint">tab — quick restart</span>
+    </div>
+
+    <!-- RESULT SCREEN -->
+    <div class="result-screen" id="result-screen">
+      <div class="result-glow"></div>
+      <div class="result-header">
+        <div class="result-tag">TEST COMPLETE</div>
+        <div class="result-wpm" id="res-wpm">0</div>
+        <div class="result-wpm-label">WORDS PER MINUTE</div>
+        <div class="rank-badge" id="rank-badge">NOVICE</div>
+      </div>
+      <div class="result-grid">
+        <div class="result-stat-card">
+          <div class="result-stat-val" id="res-acc">0%</div>
+          <div class="result-stat-name">Accuracy</div>
+        </div>
+        <div class="result-stat-card">
+          <div class="result-stat-val" id="res-correct">0</div>
+          <div class="result-stat-name">Correct Words</div>
+        </div>
+        <div class="result-stat-card">
+          <div class="result-stat-val" id="res-raw">0</div>
+          <div class="result-stat-name">Raw WPM</div>
+        </div>
+        <div class="result-stat-card">
+          <div class="result-stat-val" id="res-errors">0</div>
+          <div class="result-stat-name">Errors</div>
+        </div>
+        <div class="result-stat-card">
+          <div class="result-stat-val" id="res-chars">0</div>
+          <div class="result-stat-name">Characters</div>
+        </div>
+        <div class="result-stat-card">
+          <div class="result-stat-val" id="res-time">0s</div>
+          <div class="result-stat-name">Time</div>
+        </div>
+      </div>
+      <div class="result-actions">
+        <button class="btn btn-primary" id="res-restart-btn">↺ try again</button>
+        <button class="btn btn-ghost" id="res-new-btn">⟳ new words</button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span>TYPECRYPT v1.0</span>
+      <span class="footer-sep">·</span>
+      <span>press <kbd>tab</kbd> to restart</span>
+      <span class="footer-sep">·</span>
+      <span>built for speed</span>
+    </footer>
+
+  </div><!-- /container -->
+
+  <script src="js/words.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

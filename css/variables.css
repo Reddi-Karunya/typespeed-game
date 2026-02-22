@@ -1,0 +1,55 @@
+/* css/variables.css */
+:root {
+  /* Colors */
+  --bg:           #080810;
+  --bg-2:         #0d0d1a;
+  --surface:      #10101f;
+  --surface-2:    #14142a;
+  --border:       #1c1c35;
+  --border-hover: #2a2a50;
+
+  --accent:       #00ff88;
+  --accent-dim:   rgba(0, 255, 136, 0.12);
+  --accent-glow:  rgba(0, 255, 136, 0.35);
+  --accent-2:     #7c3aed;
+  --danger:       #ff3860;
+  --danger-dim:   rgba(255, 56, 96, 0.15);
+  --warn:         #ffbe0b;
+
+  /* Text */
+  --text:         #dde0f0;
+  --text-muted:   #4a4a70;
+  --text-dim:     #2e2e55;
+
+  /* Typing chars */
+  --char-pending: #2a2a50;
+  --char-correct: #00ff88;
+  --char-wrong:   #ff3860;
+  --char-cursor:  #00ff88;
+
+  /* Typography */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-mono:    'IBM Plex Mono', monospace;
+  --font-code:    'Space Mono', monospace;
+
+  /* Spacing */
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:   16px;
+  --space-lg:   24px;
+  --space-xl:   40px;
+  --space-2xl:  64px;
+
+  /* Radii */
+  --radius-sm:  2px;
+  --radius-md:  4px;
+
+  /* Transitions */
+  --t-fast:  0.1s ease;
+  --t-med:   0.2s ease;
+  --t-slow:  0.4s ease;
+
+  /* Shadows */
+  --shadow-glow:  0 0 30px var(--accent-glow);
+  --shadow-card:  0 4px 32px rgba(0,0,0,0.5);
+}

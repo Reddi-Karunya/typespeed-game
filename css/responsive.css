@@ -1,0 +1,118 @@
+/* css/responsive.css */
+
+/* ── Tablet ─────────────────────── */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-md) var(--space-xl);
+  }
+
+  .header {
+    padding: var(--space-lg) 0;
+  }
+
+  .logo {
+    font-size: 1.9rem;
+  }
+
+  .header-meta {
+    gap: var(--space-md);
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .result-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #word-display {
+    font-size: 1.1rem;
+    line-height: 2.2;
+  }
+
+  .toolbar {
+    gap: var(--space-sm);
+  }
+
+  .toolbar-sep {
+    display: none;
+  }
+}
+
+/* ── Mobile ──────────────────────── */
+@media (max-width: 540px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .header-meta {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    font-size: 1.7rem;
+  }
+
+  .timer-display {
+    font-size: 3rem;
+  }
+
+  .result-wpm {
+    font-size: 5rem;
+  }
+
+  .typing-card {
+    padding: var(--space-md) var(--space-md);
+  }
+
+  #word-display {
+    font-size: 1rem;
+    line-height: 2;
+    max-height: 140px;
+  }
+
+  .controls {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .shortcut-hint {
+    display: none;
+  }
+
+  .result-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mode-btn {
+    font-size: 0.62rem;
+    padding: 4px 10px;
+  }
+
+  .footer {
+    font-size: 0.58rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-xs);
+    text-align: center;
+  }
+}
+
+/* ── Very small screens ──────────── */
+@media (max-width: 380px) {
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-value {
+    font-size: 1.2rem;
+  }
+
+  #word-display {
+    font-size: 0.9rem;
+  }
+}

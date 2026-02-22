@@ -1,0 +1,181 @@
+/* css/layout.css */
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* Background grid */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scanlines */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.06) 3px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Vignette */
+.vignette {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Particle container */
+#particle-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Main container */
+.container {
+  position: relative;
+  z-index: 5;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg) var(--space-xl);
+}
+
+/* ── HEADER ─────────────────────── */
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: var(--space-xl) 0 var(--space-lg);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-md);
+}
+
+/* ── TOOLBAR ────────────────────── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  flex-wrap: wrap;
+}
+
+/* ── STATS ROW ─────────────────── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+  margin: var(--space-lg) 0 var(--space-md);
+}
+
+/* ── TIMER SECTION ─────────────── */
+.timer-section {
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+
+.progress-track {
+  height: 2px;
+  background: var(--border);
+  margin: var(--space-sm) 0 var(--space-md);
+  overflow: hidden;
+}
+
+/* ── TYPING CARD ───────────────── */
+.typing-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 28px 36px 24px;
+  margin-bottom: var(--space-lg);
+  position: relative;
+  cursor: text;
+  transition: border-color var(--t-med), box-shadow var(--t-med);
+}
+
+.typing-card:focus-within {
+  border-color: rgba(0, 255, 136, 0.25);
+  box-shadow: 0 0 0 1px rgba(0, 255, 136, 0.08),
+              inset 0 0 80px rgba(0, 255, 136, 0.015);
+}
+
+/* ── CONTROLS ──────────────────── */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+/* ── RESULT SCREEN ─────────────── */
+.result-screen {
+  display: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.result-screen.show {
+  display: block;
+  animation: result-enter 0.4s ease;
+}
+
+.result-header {
+  margin-bottom: var(--space-lg);
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.result-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+/* ── FOOTER ────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) 0 var(--space-lg);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--border);
+}
