@@ -35,6 +35,8 @@ class TypingUI {
     // Session els
     this.bestWpmDisplay = document.getElementById('best-wpm-display');
     this.testsDoneDisplay = document.getElementById('tests-done-display');
+    this.cipherMeta        = document.getElementById('cipher-meta');
+    this.cipherIndicator   = document.getElementById('cipher-indicator');
   }
 
   // ─── RENDER WORDS ──────────────────────────────────────
@@ -52,7 +54,9 @@ class TypingUI {
         const charEl = document.createElement('span');
         charEl.className = 'char pending';
         charEl.id = `c-${wi}-${ci}`;
-        charEl.textContent = ch;
+        charEl.textContent = this.game.difficulty === 'cipher'
+          ? this._encodeChar(ch, this.game.cipherShift)
+          : ch;
         wordEl.appendChild(charEl);
       });
 
@@ -254,6 +258,7 @@ class TypingUI {
     const best = this.game.bestWPM;
     this.bestWpmDisplay.textContent  = best > 0 ? best : '—';
     this.testsDoneDisplay.textContent = this.game.testsDone;
+    this.updateCipherIndicator();
   }
 
   // ─── HINTS ─────────────────────────────────────────────
@@ -309,5 +314,30 @@ class TypingUI {
   glitchFlash() {
     this.typingCard.classList.add('glitch-flash');
     setTimeout(() => this.typingCard.classList.remove('glitch-flash'), 300);
+  }
+
+  // ─── CIPHER ────────────────────────────────────────────
+
+  _encodeChar(ch, shift) {
+    const code = ch.charCodeAt(0);
+    // Uppercase A-Z
+    if (code >= 65 && code <= 90) {
+      return String.fromCharCode(((code - 65 + shift) % 26) + 65);
+    }
+    // Lowercase a-z
+    if (code >= 97 && code <= 122) {
+      return String.fromCharCode(((code - 97 + shift) % 26) + 97);
+    }
+    return ch;
+  }
+
+  updateCipherIndicator() {
+    if (!this.cipherMeta) return;
+    if (this.game.difficulty === 'cipher' && this.game.cipherShift > 0) {
+      this.cipherIndicator.textContent = `+${this.game.cipherShift}`;
+      this.cipherMeta.style.display = '';
+    } else {
+      this.cipherMeta.style.display = 'none';
+    }
   }
 }

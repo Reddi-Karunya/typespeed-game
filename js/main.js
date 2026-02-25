@@ -20,6 +20,7 @@
     ui.resetTimer();
     ui.resetLiveStats();
     ui.renderWords();
+    ui.updateCipherIndicator();
     ui.showHint();
     ui.hiddenInput.value = '';
   }

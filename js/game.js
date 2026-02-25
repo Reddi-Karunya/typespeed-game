@@ -6,6 +6,7 @@ class TypingGame {
     // Config
     this.totalTime   = 15;
     this.difficulty  = 'normal';
+    this.cipherShift = 0;
 
     // Session best
     this.bestWPM    = 0;
@@ -34,6 +35,11 @@ class TypingGame {
   init() {
     this._reset();
     this.words = getWordList(this.difficulty, 100);
+    if (this.difficulty === 'cipher') {
+      this.cipherShift = 1 + Math.floor(Math.random() * 13);
+    } else {
+      this.cipherShift = 0;
+    }
   }
 
   // ─── TIMER ─────────────────────────────────────────────
