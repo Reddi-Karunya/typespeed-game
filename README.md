@@ -7,6 +7,9 @@ A retro-terminal themed typing speed game. No frameworks, no build tools. Pure H
 Play the game live at: [https://reddi-karunya.github.io/typespeed-game/](https://reddi-karunya.github.io/typespeed-game/)
 
 ---
+## Screenshots
+
+<img width="1916" height="971" alt="image" src="https://github.com/user-attachments/assets/d374696c-cb99-4558-acd3-14c6d15741c2" />
 
 ## 📁 Project Structure
 
